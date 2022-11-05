@@ -76,3 +76,23 @@ def listadoLibros():
     print("ID | TÍTULO | GÉNERO | ISBN | EDITORIAL | AUTOR(ES)")
     for libro0 in listaLibros:
         libro0.entregarDatos()
+def buscarLibros1():
+    print("Buscar Libro\n")
+    autor = input("Ingrese el autor a buscar: ")
+    for libro0 in listaLibros:
+        if autor in libro0.autor:
+            libro0.entregarDatos()
+
+def buscarLibros2():
+    print("Buscar Libro\n")
+    editorial = input("Ingrese la editorial a buscar: ")
+    for libro0 in listaLibros:
+        if editorial == libro0.editorial:
+            libro0.entregarDatos()
+
+def buscarLibros3():
+    print("Buscar Libro\n")
+    genero = input("Ingrese el genero a buscar: ")
+    for libro0 in listaLibros:
+        if genero == libro0.genero:
+            libro0.entregarDatos()        
