@@ -115,3 +115,57 @@ def ordenarLibros():
     print('Ordenar Libros por Titulo')
     ordenar = sorted(listaLibros, key=lambda x: x.titulo)
     print(ordenar)
+
+def buscar_n_autores():
+    print("Buscar Libro\n")
+    numero = input("Ingrese Numero de autores: ")
+    for libro0 in listaLibros:
+        print(libro0.autor[0])
+        # if numero == libro0.titulo:
+        #     libro0.entregarDatos()
+
+def modificarLibros():
+    print("Modificar Libro\n")
+    isbn = int(input("Ingrese el numero de ISBN a buscar: "))
+    autores =[]
+    for libro0 in listaLibros:
+        if isbn == libro0.isbn:
+          id        = int(input("Ingrese el id único: "))
+          titulo    = input("Ingrese el título: ")
+          genero    = input("Ingrese el género: ")
+          isbn      = int(input("Ingrese el ISBN: "))
+          editorial = input("Ingrese la editorial: ")
+          n_autor = int(input('Cantidad de autores: '))
+          for i in range(n_autor):
+            autor = input(f'Ingrese Autor {i+1}: ')
+            autores.append(autor)
+          libro0.editarLibros(id, titulo, genero, isbn, editorial, autores)
+          libro0.entregarDatos()
+          
+def deleteFile():
+    whatDel = input('Ingrese el titulo del libro que desea eliminar: ')
+    df = pd.read_csv('books.csv',index_col=['id'])
+    A = df.drop(index=df[df['titulo']==whatDel].index)
+    print("")
+
+def guardar_csv():
+    list_save_book = []
+    file = open("books.csv", "w")
+    file.close()
+    atributos = [['ID', 'Titulo', 'Genero', 'ISBN', 'Editorial', 'Autores']]
+    with open('books.csv','a',newline='') as file:
+        write = csv.writer(file, delimiter=',')
+        write.writerows(atributos)
+    for libro in listaLibros:
+        save_book = []
+        save_book.append(libro.id)
+        save_book.append(libro.titulo)
+        save_book.append(libro.genero)
+        save_book.append(libro.isbn)
+        save_book.append(libro.editorial)
+        save_book.append(libro.autor)
+        list_save_book.append(save_book)
+    with open('books.csv','a',newline='') as file:
+            write = csv.writer(file, delimiter=',')
+            write.writerows(list_save_book)
+    print('Guardado Correctamente')
