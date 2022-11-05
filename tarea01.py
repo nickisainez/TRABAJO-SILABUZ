@@ -169,3 +169,61 @@ def guardar_csv():
             write = csv.writer(file, delimiter=',')
             write.writerows(list_save_book)
     print('Guardado Correctamente')
+def main():
+    while True:
+        print("\n")
+        print("|****************************|")
+        print("|**|      Bienvenidos     |**|")
+        print("|**|         Menu         |**|")
+        print("|****************************|")
+        print("")  
+        print("Seleccione una de las siguientes opciones:");
+        print("1.- Registrar Libro")
+        print("2.- Listar libros ingresados")
+        print("3.- Buscar libro por ISBN")
+        print("4.- Buscar libro por título")
+        print("5.- Buscar libro por autor")
+        print("6.- Buscar libro por editorial")
+        print("7.- Buscar libro por género")
+        print("8.- Modificar libros ingresados")
+        print("9.- Eliminar libro")
+        print("10.- Ordenar Libros por Titulo")
+        print("11.- Buscar por número de autores")
+        print("12.- Guardar Cambios en el CSV")
+        
+        while True:
+            try:
+                opcion = int(input("Opcion: "))
+                break
+            except ValueError:
+                print("Ingrese una opción válida: ")
+                continue
+             
+        if opcion == 1:
+            registrarLibros()
+        elif opcion == 2:
+            listadoLibros()
+        elif opcion == 3:
+            buscarLibros4()
+        elif opcion == 4:
+            buscarLibros5()
+        elif opcion == 5:
+            buscarLibros1()
+        elif opcion == 6:
+            buscarLibros2()
+        elif opcion == 7:
+            buscarLibros3()
+        elif opcion == 8:
+            modificarLibros()
+        elif opcion == 9:
+            deleteFile()
+        elif opcion == 10:
+            ordenarLibros()
+        elif opcion == 11:
+            buscar_n_autores()
+        elif opcion == 12:
+            guardar_csv()
+                
+if __name__ == '__main__':
+    readFile()
+    main()    
