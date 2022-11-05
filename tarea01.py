@@ -96,3 +96,22 @@ def buscarLibros3():
     for libro0 in listaLibros:
         if genero == libro0.genero:
             libro0.entregarDatos()        
+
+def buscarLibros4():
+    print("Buscar Libro\n")
+    isbn = int(input("Ingrese el ISBN a buscar: "))
+    for libro0 in listaLibros:
+        if isbn == libro0.isbn:
+            libro0.entregarDatos()
+
+def buscarLibros5():
+    print("Buscar Libro\n")
+    titulo = input("Ingrese el título a buscar: ")
+    for libro0 in listaLibros:
+        if titulo in libro0.titulo:
+            libro0.entregarDatos()
+
+def ordenarLibros():
+    print('Ordenar Libros por Titulo')
+    ordenar = sorted(listaLibros, key=lambda x: x.titulo)
+    print(ordenar)
