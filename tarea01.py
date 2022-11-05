@@ -42,3 +42,37 @@ def readFile():
             info_book.append(info)
         book = Libro(info_book[0],info_book[1],info_book[2],info_book[3],info_book[4],info_book[5])
         listaLibros.append(book)
+        
+def registrarLibros():
+    autores = []
+    print("Registro de Libro\n")
+    while True:
+        try:
+            id = int(input("Ingrese el id único: "))
+            break
+        except ValueError:
+            print('Ingrese un entero por favor')
+            continue
+    titulo    = input("Ingrese el título: ")
+    genero    = input("Ingrese el género: ")
+    while True:
+        try:
+            isbn = int(input("Ingrese el ISBN (13 dígitos): "))
+            break
+        except ValueError:
+            print('Ingrese correctamente el ISBN por favor')
+            continue
+    editorial = input("Ingrese la editorial: ")
+    n_autor = int(input('Cantidad de autores: '))
+    for i in range(n_autor):
+        autor = input(f'Ingrese Autor {i+1}: ')
+        autores.append(autor)
+
+    libro0 = Libro(id, titulo, genero, isbn, editorial, autores)
+    listaLibros.append(libro0)
+  
+def listadoLibros():
+    print("Listado de Libros\n")
+    print("ID | TÍTULO | GÉNERO | ISBN | EDITORIAL | AUTOR(ES)")
+    for libro0 in listaLibros:
+        libro0.entregarDatos()
