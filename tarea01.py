@@ -15,3 +15,17 @@ class Libro:
         self.isbn      = isbn
         self.editorial = editorial
         self.autor     = autor
+    def entregarDatos(self):
+        print("{} - {} - {} - {} - {} - {}".format(self.id, self.titulo, self.genero, self.isbn, self.editorial, self.autor))
+    
+    def editarLibros(self, id, titulo, genero, isbn, editorial, autor):
+        self.id        = id
+        self.titulo    = titulo
+        self.genero    = genero
+        self.isbn      = isbn
+        self.editorial = editorial
+        self.autor     = autor
+        print("Modificación Exitosa!")
+    
+    def __repr__(self):
+        return "{0}:{1}".format(self.id, self.titulo)     
