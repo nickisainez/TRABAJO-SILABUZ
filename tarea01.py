@@ -28,4 +28,17 @@ class Libro:
         print("Modificación Exitosa!")
     
     def __repr__(self):
-        return "{0}:{1}".format(self.id, self.titulo)     
+        return "{0}:{1}".format(self.id, self.titulo)
+
+def readFile():
+    path0 = input("Ingrese la dirección relativa del archivo, ejm. (***.csv): ")
+    df = pd.read_csv(path0,header=0)
+    print("LEYENDO TU ARCHIVO CSV")
+    print(df)
+    for i in range(len(df)):
+        info_book =[]
+        for j in df:
+            info = df.loc[i][j]
+            info_book.append(info)
+        book = Libro(info_book[0],info_book[1],info_book[2],info_book[3],info_book[4],info_book[5])
+        listaLibros.append(book)
