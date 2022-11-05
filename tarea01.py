@@ -28,6 +28,22 @@ class Libro:
     
     def __repr__(self):
         return "{0}:{1}".format(self.id, self.titulo)
+        
+## Zona de validaciones
+def NumberValidation(num)->int:
+    while num.isdigit() != True:
+        print('El dato que ingreso no es un número')
+        num = input('Ingrese un numero ')
+    numSalida=int(num)
+    return numSalida
+#
+def SpaceValidation(txt_in)->str:
+    txt=txt_in.strip()
+    while txt=='':
+        print('El dato esta vacio')
+        txt = input('Ingrese datos correctos: ')
+    return txt
+#######################        
 
 def readFile():
     path0 = input("Ingrese la dirección relativa del archivo, ejm. (***.csv): ")
