@@ -117,11 +117,18 @@ def ordenarLibros():
 
 def buscar_n_autores():
     print("Buscar Libro\n")
-    numero = input("Ingrese Numero de autores: ")
+    numero = int(input("Ingrese Numero de autores: "))
     for libro0 in listaLibros:
-        print(libro0.autor[0])
-        # if numero == libro0.titulo:
-        #     libro0.entregarDatos()
+        autores = libro0.autor
+        #Limpiamos la cadena recibida por la clase y lo convertimos en una lista para contabilizar los autores
+        autores = autores.replace('[', "")
+        autores = autores.replace(']', "")
+        autores = autores.replace("'", "")
+        autores = autores.replace(' ', "")
+        autores = autores.split(',')
+        #Comprobamos cual de los obejetos de la clase cumple con la condición
+        if numero == len(autores):
+            libro0.entregarDatos()
 
 def modificarLibros():
     print("Modificar Libro\n")
