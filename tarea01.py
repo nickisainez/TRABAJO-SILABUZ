@@ -142,10 +142,12 @@ def modificarLibros():
           libro0.entregarDatos()
           
 def deleteFile():
-    whatDel = input('Ingrese el titulo del libro que desea eliminar: ')
-    df = pd.read_csv('books.csv',index_col=['id'])
-    A = df.drop(index=df[df['titulo']==whatDel].index)
-    print("")
+    iddelete = input('Ingrese el ID del libro que desea eliminar: ')
+    for libro0 in listaLibros:
+        if iddelete == libro0.id:
+            libro0.entregarDatos()
+            listaLibros.remove(libro0)
+            print('Eliminado correctamente...')
 
 def guardar_csv():
     list_save_book = []
