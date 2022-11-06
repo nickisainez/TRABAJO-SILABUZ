@@ -141,11 +141,12 @@ def buscar_n_autores():
     for libro0 in listaLibros:
         autores = libro0.autor
         #Limpiamos la cadena recibida por la clase y lo convertimos en una lista para contabilizar los autores
-        autores = autores.replace('[', "")
-        autores = autores.replace(']', "")
-        autores = autores.replace("'", "")
-        autores = autores.replace(' ', "")
-        autores = autores.split(',')
+        if '[' in autores:
+            autores = autores.replace('[', "")
+            autores = autores.replace(']', "")
+            autores = autores.replace("'", "")
+            autores = autores.replace(' ', "")
+            autores = autores.split(',')
         #Comprobamos cual de los obejetos de la clase cumple con la condición
         if numero == len(autores):
             libro0.entregarDatos()
