@@ -40,3 +40,33 @@ def print_pokemon_tipo_habilidad(response):
             print(f'URL Imágen  : {img}')
 
     print("-------------------------------------------------------------------------------------------------\n")
+    
+#Listar Pokemon por Generaciones
+def genPok():
+    print("-----------------------------------------------------")
+    print("| Número a ingresar respecto a la gen. de pokemones |")
+    print("-----------------------------------------------------")
+    print("|           Generación I   : 1                      |")
+    print("|           Generación II  : 2                      |")
+    print("|           Generación III : 3                      |")
+    print("|           Generación IV  : 4                      |")
+    print("|           Generación V   : 5                      |")
+    print("|           Generación VI  : 6                      |")
+    print("|           Generación VII : 7                      |")
+    print("|           Generación VII : 8                      |")
+    print("-----------------------------------------------------\n")
+    numbers     =[i for i in range(1,9)]
+
+    while True:
+        try:
+            genP = int(input("Ingrese el número de generación: "))
+        except ValueError:
+            print("Ingrese el número de generación correctamente")
+            continue
+        if genP not in numbers:
+            print("Ingrese el número de generación correctamente")
+            continue
+        break
+
+    responseGen = requests.get(pokeapi_url+var+str(genP)).json()
+    printPokemon(responseGen)
