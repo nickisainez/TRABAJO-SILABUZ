@@ -226,3 +226,48 @@ def typePok():
 
     responseType = requests.get(pokeapi_url+var+str(typeP)).json()
     print_pokemon_tipo_habilidad(responseType)
+
+# Menu de la APP
+def main():
+    print("\n")
+    print("|****************************|")
+    print("|**|      Bienvenido(a)   |**|")
+    print("|**|         Menu         |**|")
+    print("|****************************|")
+    print("")
+    print("Seleccione una de las siguientes opciones:")
+    print("1.- Listar pokemones por generación")
+    print("2.- Listar pokemones por forma")
+    print("3.- Listar pokemones por habilidad")
+    print("4.- Listar pokemones por habitat")
+    print("5.- Listar pokemones por tipo\n")
+
+    numbersOp = [i for i in range(1,6)]
+    while True:
+        try:
+            opcion = int(input('Ingrese una opción: '))
+        except ValueError:
+            print("Ingrese la opción correctamente")
+            continue
+        if opcion not in numbersOp:
+            print("Ingrese la opción correctamente")
+            continue
+        break
+
+    if opcion == 1:
+        genPok()
+    if opcion == 2:
+        shapePok()
+    if opcion == 3:
+        abilitPoke()
+    if opcion == 4:
+        habPok()
+    elif opcion == 5:
+        typePok()
+
+    againU = input('¿Desea realizar otra consulta? (Tipee "Si" para ello o cualquier tecla para finalizar): ').lower()
+    if againU == 'si':
+        main()
+
+if __name__ == '__main__':
+    main()
