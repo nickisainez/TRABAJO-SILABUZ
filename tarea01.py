@@ -49,7 +49,7 @@ def readFile():
     try:
         path0 = input("Ingrese la dirección relativa del archivo, ejm. (***.csv): ")
         df = pd.read_csv(path0,header=0)
-        print("LEYENDO TU ARCHIVO CSV 📖")
+        print("\nLEYENDO TU ARCHIVO CSV 📖\n")
         print(df)
         for i in range(len(df)):
             info_book =[]
@@ -208,63 +208,66 @@ def guardar_csv():
     except csv.Error as e:
         print('Ocurrio un error', e)    
 def main():
-    while True:
-        print("\n")
-        print("|****************************|")
-        print("|**|      Bienvenidos     |**|")
-        print("|**|         Menu         |**|")
-        print("|****************************|")
-        print("")  
-        print("Seleccione una de las siguientes opciones:");
-        print("1.- Registrar Libro")
-        print("2.- Listar libros ingresados")
-        print("3.- Buscar libro por ISBN")
-        print("4.- Buscar libro por título")
-        print("5.- Buscar libro por autor")
-        print("6.- Buscar libro por editorial")
-        print("7.- Buscar libro por género")
-        print("8.- Modificar libros ingresados")
-        print("9.- Eliminar libro")
-        print("10.- Ordenar Libros por Titulo")
-        print("11.- Buscar por número de autores")
-        print("12.- Guardar Cambios en el CSV")
-        print("0.- Salir")
+    print("\n")
+    print("|****************************|")
+    print("|**|      Bienvenidos     |**|")
+    print("|**|         Menu         |**|")
+    print("|****************************|")
+    print("")  
+    print("Seleccione una de las siguientes opciones:\n")
+    print("0.- Cargar archivo .csv")
+    print("1.- Registrar Libro")
+    print("2.- Listar libros")
+    print("3.- Buscar libro por ISBN")
+    print("4.- Buscar libro por título")
+    print("5.- Buscar libro por autor")
+    print("6.- Buscar libro por editorial")
+    print("7.- Buscar libro por género")
+    print("8.- Modificar libros")
+    print("9.- Eliminar libro")
+    print("10.- Ordenar Libros por Titulo")
+    print("11.- Buscar por número de autores")
+    print("12.- Guardar Cambios en el CSV")
+    print("13.- Salir\n")
         
-        while True:
-            try:
-                opcion = int(input("Opción: "))
-                break
-            except ValueError:
-                print("Ingrese una opción válida: ")
-                continue
-             
-        if opcion == 1:
+    while True:
+        try:
+            opcion = int(input("Opción: "))
+            break
+        except ValueError:
+            print("Ingrese una opción válida: ")
+            continue
+    if opcion == 0:
+        readFile()
+    if opcion == 1:
             registrarLibros()
-        elif opcion == 2:
+    elif opcion == 2:
             listadoLibros()
-        elif opcion == 3:
+    elif opcion == 3:
             buscarLibros4()
-        elif opcion == 4:
+    elif opcion == 4:
             buscarLibros5()
-        elif opcion == 5:
+    elif opcion == 5:
             buscarLibros1()
-        elif opcion == 6:
+    elif opcion == 6:
             buscarLibros2()
-        elif opcion == 7:
+    elif opcion == 7:
             buscarLibros3()
-        elif opcion == 8:
+    elif opcion == 8:
             modificarLibros()
-        elif opcion == 9:
+    elif opcion == 9:
             deleteFile()
-        elif opcion == 10:
+    elif opcion == 10:
             ordenarLibros()
-        elif opcion == 11:
+    elif opcion == 11:
             buscar_n_autores()
-        elif opcion == 12:
+    elif opcion == 12:
             guardar_csv()
-        elif opcion == 0:
+    elif opcion == 13:
             print('Vuelva pronto 😊 ')
-            quit()  
+            quit() 
+    userN = input('\n¿Desea realizar otra acción? (Tipee "Si" para ello y cualquier tecla para finalizar): ').lower()
+    if userN == 'si':
+        main()
 if __name__ == '__main__':
-    readFile()
-    main()    
+    main()
