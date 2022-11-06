@@ -152,3 +152,35 @@ def abilitPoke():
         break
     responseHabil = requests.get(pokeapi_url+var+str(abilP)).json()
     print_pokemon_tipo_habilidad(responseHabil)
+# Listar pokemon por habitad
+def habPok():
+    print("-----------------------------------------------------")
+    print("| Número a ingresar respecto al hábitat del pokemon |")
+    print("-----------------------------------------------------")
+    print("|           Cave          : 1                       |")
+    print("|           Forest        : 2                       |")
+    print("|           Grassland     : 3                       |")
+    print("|           Mountain      : 4                       |")
+    print("|           Rare          : 5                       |")
+    print("|           Rough-terrain : 6                       |")
+    print("|           Sea           : 7                       |")
+    print("|           Urban         : 8                       |")
+    print("|           Waters-edge   : 9                       |")
+    print("-----------------------------------------------------\n")
+
+    var         = "pokemon-habitat/"
+    numbers     =[i for i in range(1,10)]
+
+    while True:
+        try:
+            habP = int(input("Ingrese el número de hábitat del pokemon: "))
+        except ValueError:
+            print("Ingrese el número de hábitat del pokemon correctamente")
+            continue
+        if habP not in numbers:
+            print("Ingrese el número de hábitat del pokemon correctamente")
+            continue
+        break
+
+    responseHab = requests.get(pokeapi_url+var+str(habP)).json()
+    printPokemon(responseHab)    
