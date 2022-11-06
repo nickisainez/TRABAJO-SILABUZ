@@ -24,3 +24,19 @@ def printPokemon(response):
 
     print("-------------------------------------------------------------------------------------------------\n")
 
+def print_pokemon_tipo_habilidad(response):
+    for name_pokemon in response['pokemon']:
+        nombre = name_pokemon['pokemon']['name']
+        responseAux4 = requests.get(pokeapi_url+ poke + nombre)
+        if responseAux4.status_code == 200:
+            response = requests.get(pokeapi_url+ poke + nombre).json()
+            abilities = [i['ability']['name'] for i in response['abilities']]
+            img = response['sprites']['front_default']
+            if img == None:
+                img = 'Imágen no disponible por el momento.'
+            print("-------------------------------------------------------------------------------------------------")
+            print(f'Nombre      : {nombre}')
+            print(f'Habilidades : {abilities}')
+            print(f'URL Imágen  : {img}')
+
+    print("-------------------------------------------------------------------------------------------------\n")
