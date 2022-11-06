@@ -183,4 +183,46 @@ def habPok():
         break
 
     responseHab = requests.get(pokeapi_url+var+str(habP)).json()
-    printPokemon(responseHab)    
+    printPokemon(responseHab)
+
+# Listar Pokemon por tipo
+def typePok():
+    print("-----------------------------------------------------")
+    print("|  Número para ingresar respecto al tipo de pokemon |")
+    print("-----------------------------------------------------")
+    print("|                 Normal   : 1                      |")
+    print("|                 Fighting : 2                      |")
+    print("|                 Flying   : 3                      |")
+    print("|                 Poison   : 4                      |")
+    print("|                 Ground   : 5                      |")
+    print("|                 Rock     : 6                      |")
+    print("|                 Bug      : 7                      |")
+    print("|                 Ghost    : 8                      |")
+    print("|                 Steel    : 9                      |")
+    print("|                 Fire     : 10                     |")
+    print("|                 Water    : 11                     |")
+    print("|                 Grass    : 12                     |")
+    print("|                 Electric : 13                     |")
+    print("|                 Psychic  : 14                     |")
+    print("|                 Ice      : 15                     |")
+    print("|                 Dragon   : 16                     |")
+    print("|                 Dark     : 17                     |")
+    print("|                 Fairy    : 18                     |")
+    print("-----------------------------------------------------\n")
+
+    var         = "type/"
+    numbers     =[i for i in range(1,19)]
+
+    while True:
+        try:
+            typeP = int(input("Ingrese el número del tipo de pokemon: "))
+        except ValueError:
+            print("Ingrese el número del tipo de pokemon correctamente")
+            continue
+        if typeP not in numbers:
+            print("Ingrese el número del tipo de pokemon correctamente")
+            continue
+        break
+
+    responseType = requests.get(pokeapi_url+var+str(typeP)).json()
+    print_pokemon_tipo_habilidad(responseType)
