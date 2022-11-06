@@ -70,3 +70,43 @@ def genPok():
 
     responseGen = requests.get(pokeapi_url+var+str(genP)).json()
     printPokemon(responseGen)
+
+# Listar pokemon por forma
+def shapePok():
+    print("-----------------------------------------------------")
+    print("| Número a ingresar respecto a la forma del pokemon |")
+    print("-----------------------------------------------------")
+    print("|           Ball          : 1                       |")
+    print("|           Squiggle      : 2                       |")
+    print("|           Fish          : 3                       |")
+    print("|           Arms          : 4                       |")
+    print("|           Blob          : 5                       |")
+    print("|           Upright       : 6                       |")
+    print("|           Legs          : 7                       |")
+    print("|           Quadruped     : 8                       |")
+    print("|           Wings         : 9                       |")
+    print("|           Tentacles     : 10                      |")
+    print("|           Heads         : 11                      |")
+    print("|           Humanoid      : 12                      |")
+    print("|           Bug-wings     : 13                      |")
+    print("|           Armor         : 14                      |")
+    print("-----------------------------------------------------\n")
+
+    pokeapi_url = "https://pokeapi.co/api/v2/"
+    var         = "pokemon-shape/"
+    poke        = "pokemon/"
+    numbers     =[i for i in range(1,15)]
+
+    while True:
+        try:
+            shaP = int(input("Ingrese el número de forma del pokemon: "))
+        except ValueError:
+            print("Ingrese el número de forma del pokemon correctamente")
+            continue
+        if shaP not in numbers:
+            print("Ingrese el número de forma del pokemon correctamente")
+            continue
+        break
+
+    responseSha = requests.get(pokeapi_url+var+str(shaP)).json()
+    printPokemon(responseSha)
