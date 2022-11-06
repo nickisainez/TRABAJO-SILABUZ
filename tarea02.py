@@ -110,3 +110,45 @@ def shapePok():
 
     responseSha = requests.get(pokeapi_url+var+str(shaP)).json()
     printPokemon(responseSha)
+# Listar Pokemon por habilidades
+def abilitPoke():
+    print("-----------------------------------------------------")
+    print("| Número a ingresar respecto a la habilidad del pok |")
+    print("-----------------------------------------------------")
+    print("|           Stench          : 1                     |")
+    print("|           Drizzle         : 2                     |")
+    print("|           Speed-boost     : 3                     |")
+    print("|           Battle-armor    : 4                     |")
+    print("|           Sturdy          : 5                     |")
+    print("|           Damp            : 6                     |")
+    print("|           Limber          : 7                     |")
+    print("|           Sand-veil       : 8                     |")
+    print("|           Static          : 9                     |")
+    print("|           Volt-absorb     : 10                    |")
+    print("|           Water-absorb    : 11                    |")
+    print("|           Oblivious       : 12                    |")
+    print("|           Cloud-nine      : 13                    |")
+    print("|           Compound-eyes   : 14                    |")
+    print("|           Insomnia        : 15                    |")
+    print("|           Color-change    : 16                    |")
+    print("|           Immunity        : 17                    |")
+    print("|           Flash-fire      : 18                    |")
+    print("|           Shield-dust     : 19                    |")
+    print("|           Own-tempo       : 20                    |")
+    print("-----------------------------------------------------\n")
+
+    var         = "ability/"
+    numbers     =[i for i in range(1,21)]
+
+    while True:
+        try:
+            abilP = int(input("Ingrese el número de habilidad del pokemon: "))
+        except ValueError:
+            print("Ingrese el número de habilidad del pokemon correctamente")
+            continue
+        if abilP not in numbers:
+            print("Ingrese el número de habilidad del pokemon correctamente")
+            continue
+        break
+    responseHabil = requests.get(pokeapi_url+var+str(abilP)).json()
+    print_pokemon_tipo_habilidad(responseHabil)
